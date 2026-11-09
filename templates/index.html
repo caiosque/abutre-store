@@ -6,28 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABUTRE | Gothic Store</title>
 
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imgs/logo.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <style>
+        /* ========================================
+   ABUTRE - GOTHIC STORE
+   Identidade visual
+======================================== */
+
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+
+        /* ========================================
+   PALETA DE CORES
+======================================== */
+
+        :root {
+            --cinza: #59554F;
+            --preto: #000000;
+            --creme: #FFF1DE;
+            --marrom: #5F3A20;
+            --vinho: #690E07;
+
+            --fundo-secundario: #11100F;
+            --fundo-card: #191715;
+            --borda: #39332E;
+        }
+
+
+        /* ========================================
+   FONTES
+======================================== */
+
+        @font-face {
+            font-family: 'AngerStyles';
+            src: url('/static/font/AngerStyles.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        /* ========================================
+   RESET E CONFIGURAÇÕES GERAIS
+======================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        @font-face {
-            font-family: 'AngerStyles';
-            src: url('/static/fonts/AngerStyles.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #100e11;
-            color: #e8e1e8;
+            background: var(--preto);
+            color: var(--creme);
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -36,13 +73,25 @@
             color: inherit;
         }
 
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* ========================================
+   CABEÇALHO
+======================================== */
+
         header {
-            background: #171419;
+            background: var(--preto);
             padding: 20px 8%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #302832;
+
+            border-bottom: 1px solid var(--borda);
         }
 
         .logo {
@@ -57,22 +106,11 @@
             object-fit: contain;
         }
 
-        .logo-placeholder {
-            width: 65px;
-            height: 65px;
-            border: 1px dashed #806b80;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #a18ba1;
-            font-size: 10px;
-        }
-
         .logo h1 {
-            font-family: 'AngerStyles', sans-serif;
+            font-family: 'AngerStyles', serif;
             font-size: 35px;
-            letter-spacing: 5px;
-            color: #ffffff;
+            letter-spacing: 3px;
+            color: var(--creme);
         }
 
         nav {
@@ -84,29 +122,35 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: var(--creme);
             transition: .3s;
         }
 
         nav a:hover {
-            color: #a66b86;
+            color: var(--vinho);
         }
 
         .icons {
             display: flex;
             gap: 20px;
             font-size: 20px;
+            color: var(--creme);
+            cursor: pointer;
         }
 
-        /* BANNER */
+
+        /* ========================================
+   BANNER PRINCIPAL
+======================================== */
 
         .banner {
             min-height: 520px;
 
             background:
                 linear-gradient(90deg,
-                    #100e11 5%,
-                    rgba(16, 14, 17, 0.75) 45%,
-                    rgba(16, 14, 17, 0.25) 100%),
+                    rgba(0, 0, 0, 0.95) 5%,
+                    rgba(0, 0, 0, 0.75) 45%,
+                    rgba(0, 0, 0, 0.20) 100%),
                 url('https://s2-casaejardim.glbimg.com/VFkvEo_Q86bCnVxkCEMdynLeEsI=/0x0:5043x3296/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_a0b7e59562ef42049f4e191fe476fe7d/internal_photos/bs/2024/R/r/ArE2ntSbaNcBBHwrrTbw/catedral-gotica-criada-a-partir-de-rochas-vulcanicas-escuras-e-cartao-postal-de-cidade-francesa2.jpg');
 
             background-size: cover;
@@ -126,44 +170,58 @@
             font-family: 'Cinzel', serif;
             font-size: 52px;
             line-height: 1.2;
+            color: var(--creme);
             margin-bottom: 20px;
         }
 
         .banner p {
-            color: #c2b6c2;
+            color: var(--creme);
             font-size: 14px;
             line-height: 1.8;
             margin-bottom: 30px;
         }
 
+
+        /* ========================================
+   BOTÕES
+======================================== */
+
         .button {
             display: inline-block;
             padding: 14px 30px;
-            background: #642e49;
-            color: white;
+
+            background: var(--vinho);
+            color: var(--creme);
+
             text-transform: uppercase;
             font-size: 11px;
             letter-spacing: 2px;
+
+            border: 1px solid var(--vinho);
             transition: .3s;
-            border: 1px solid #642e49;
         }
 
         .button:hover {
-            background: transparent;
-            border-color: #a66b86;
+            background: var(--marrom);
+            border-color: var(--marrom);
         }
 
-        /* CATEGORIAS */
+
+        /* ========================================
+   CATEGORIAS
+======================================== */
 
         .categories {
             padding: 65px 8%;
             text-align: center;
+            background: var(--preto);
         }
 
         .section-title {
             font-family: 'Cinzel', serif;
             font-size: 30px;
             letter-spacing: 3px;
+            color: var(--creme);
             margin-bottom: 40px;
         }
 
@@ -175,37 +233,45 @@
 
         .category {
             height: 260px;
-            background: #211b23;
-            border: 1px solid #40313f;
+
+            background: var(--fundo-card);
+            border: 1px solid var(--cinza);
+
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+
             transition: .3s;
         }
 
         .category:hover {
-            border-color: #a66b86;
+            border-color: var(--vinho);
             transform: translateY(-5px);
+            background: var(--marrom);
         }
 
         .category h3 {
             font-family: 'Cinzel', serif;
             font-size: 22px;
+            color: var(--creme);
             margin-bottom: 10px;
         }
 
         .category span {
             font-size: 10px;
             letter-spacing: 3px;
-            color: #ad8da6;
+            color: var(--creme);
         }
 
-        /* PRODUTOS */
+
+        /* ========================================
+   VITRINE DE PRODUTOS
+======================================== */
 
         .products {
             padding: 70px 8%;
-            background: #171419;
+            background: var(--fundo-secundario);
             text-align: center;
         }
 
@@ -217,19 +283,31 @@
 
         .product {
             text-align: left;
-            background: #211d22;
+            background: var(--fundo-card);
             padding-bottom: 20px;
+            border: 1px solid var(--borda);
+            transition: .3s;
+        }
+
+        .product:hover {
+            border-color: var(--cinza);
+            transform: translateY(-4px);
         }
 
         .product-image {
             width: 100%;
             height: 290px;
-            background: linear-gradient(135deg, #29212b, #151116);
+
+            background: linear-gradient(135deg,
+                    var(--marrom),
+                    var(--preto));
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             overflow: hidden;
-            border-bottom: 1px solid #40313f;
+            border-bottom: 1px solid var(--borda);
         }
 
         .product-image img {
@@ -239,12 +317,12 @@
             transition: .4s;
         }
 
-        .product:hover img {
+        .product:hover .product-image img {
             transform: scale(1.06);
         }
 
         .placeholder {
-            color: #8e758e;
+            color: var(--creme);
             font-size: 12px;
             letter-spacing: 2px;
         }
@@ -256,11 +334,12 @@
         .product-info h3 {
             font-size: 14px;
             font-weight: 500;
+            color: var(--creme);
             margin-bottom: 10px;
         }
 
         .price {
-            color: #bd829e;
+            color: var(--creme);
             font-size: 15px;
             font-weight: 600;
         }
@@ -268,127 +347,208 @@
         .buy {
             display: block;
             text-align: center;
+
             margin-top: 15px;
             padding: 11px;
-            border: 1px solid #67445e;
+
+            border: 1px solid var(--vinho);
+
+            color: var(--creme);
             font-size: 10px;
             letter-spacing: 2px;
             text-transform: uppercase;
+
             transition: .3s;
         }
 
         .buy:hover {
-            background: #642e49;
+            background: var(--vinho);
         }
 
-        /* SOBRE */
+
+        /* ========================================
+   SOBRE A LOJA
+======================================== */
 
         .about {
             padding: 90px 15%;
             text-align: center;
+            background: var(--preto);
         }
 
         .about h2 {
             font-family: 'Cinzel', serif;
             font-size: 30px;
+            color: var(--creme);
             margin-bottom: 25px;
         }
 
         .about p {
             font-size: 13px;
             line-height: 2;
-            color: #b7aab7;
+            color: var(--cinza);
         }
 
-        /* NEWSLETTER */
+
+        /* ========================================
+   NEWSLETTER
+======================================== */
 
         .newsletter {
             padding: 65px 20px;
             text-align: center;
-            background: #211b23;
+            background: var(--fundo-card);
         }
 
         .newsletter h2 {
             font-family: 'Cinzel', serif;
+            color: var(--creme);
             margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            color: var(--cinza);
+            font-size: 13px;
         }
 
         .newsletter input {
             padding: 14px;
             width: 280px;
-            background: #100e11;
-            border: 1px solid #574253;
-            color: white;
+
+            background: var(--preto);
+            border: 1px solid var(--cinza);
+
+            color: var(--creme);
             outline: none;
+        }
+
+        .newsletter input:focus {
+            border-color: var(--vinho);
+        }
+
+        .newsletter input::placeholder {
+            color: var(--cinza);
         }
 
         .newsletter button {
             padding: 14px 25px;
-            background: #642e49;
-            border: none;
-            color: white;
+
+            background: var(--vinho);
+            border: 1px solid var(--vinho);
+
+            color: var(--creme);
             cursor: pointer;
+
+            transition: .3s;
         }
 
-        /* RODAPE */
+        .newsletter button:hover {
+            background: var(--marrom);
+            border-color: var(--marrom);
+        }
+
+
+        /* ========================================
+   RODAPÉ
+======================================== */
 
         footer {
             padding: 35px 8%;
-            background: #0b090c;
+            background: var(--preto);
             text-align: center;
-            border-top: 1px solid #302832;
+            border-top: 1px solid var(--borda);
         }
 
         footer h2 {
-            font-family: 'AngerStyles', sans-serif;
-            font-size: 35px;
-            letter-spacing: 5px;
-            color: #ffffff;
+            font-family: 'AngerStyles', serif;
+            font-size: 30px;
+            letter-spacing: 4px;
+            color: var(--creme);
+            margin-bottom: 15px;
         }
 
         footer p {
-            color: #8d818d;
+            color: var(--cinza);
             font-size: 11px;
             margin: 10px;
         }
 
+
+        /* ========================================
+   RESPONSIVIDADE - TABLETS
+======================================== */
+
         @media (max-width: 900px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
+
+            header {
+                padding: 20px 5%;
             }
 
             nav {
                 gap: 12px;
             }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .banner {
+                background-position: center;
+            }
+
         }
 
+
+        /* ========================================
+   RESPONSIVIDADE - CELULARES
+======================================== */
+
         @media (max-width: 600px) {
+
             header {
                 flex-wrap: wrap;
                 gap: 20px;
+            }
+
+            .logo h1 {
+                font-size: 28px;
             }
 
             nav {
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
+                gap: 15px;
             }
 
-            .logo h1 {
-                font-size: 20px;
+            .icons {
+                display: none;
             }
 
             .banner {
                 min-height: 420px;
                 padding: 40px 8%;
+                background-position: center;
             }
 
             .banner h2 {
                 font-size: 35px;
             }
 
+            .banner p {
+                font-size: 13px;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
             .category-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .category {
+                height: 220px;
             }
 
             .product-grid {
@@ -400,13 +560,44 @@
                 height: 190px;
             }
 
+            .product-info {
+                padding: 12px;
+            }
+
+            .product-info h3 {
+                font-size: 12px;
+            }
+
+            .price {
+                font-size: 13px;
+            }
+
+            .buy {
+                font-size: 9px;
+                padding: 10px 5px;
+            }
+
             .about {
                 padding: 60px 8%;
+            }
+
+            .about h2 {
+                font-size: 23px;
+            }
+
+            .newsletter {
+                padding: 50px 15px;
             }
 
             .newsletter input {
                 width: 65%;
             }
+
+            .newsletter button {
+                padding: 14px 12px;
+                font-size: 10px;
+            }
+
         }
     </style>
 </head>
@@ -467,17 +658,17 @@
         <div class="category-grid">
 
             <a href="#produtos" class="category">
-                <h3>Roupas</h3>
+                <h3>Blusas</h3>
                 <span>ESTILO ALTERNATIVO</span>
             </a>
 
             <a href="#produtos" class="category">
-                <h3>Acessórios</h3>
+                <h3>Vestidos</h3>
                 <span>DETALHES SOMBRIOS</span>
             </a>
 
             <a href="#produtos" class="category">
-                <h3>Calçados</h3>
+                <h3>Saias</h3>
                 <span>PASSOS NA ESCURIDÃO</span>
             </a>
 
@@ -490,7 +681,7 @@
 
     <section class="products" id="produtos">
 
-        <h2 class="section-title">COLEÇÃO EXCLUSIVA</h2>
+        <h2 class="section-title">COLEÇÃO PENUMBRA</h2>
 
         <div class="product-grid">
 
@@ -503,7 +694,7 @@
                 </div>
 
                 <div class="product-info">
-                    <h3>Camiseta Dark Soul</h3>
+                    <h3>Blusa Sangria</h3>
                     <p class="price">R$ 89,90</p>
                     <a href="#" class="buy">Comprar</a>
                 </div>
@@ -520,8 +711,8 @@
                 </div>
 
                 <div class="product-info">
-                    <h3>Corset Gothic</h3>
-                    <p class="price">R$ 159,90</p>
+                    <h3>Noctuna</h3>
+                    <p class="price">R$ 119,90</p>
                     <a href="#" class="buy">Comprar</a>
                 </div>
 
@@ -537,7 +728,7 @@
                 </div>
 
                 <div class="product-info">
-                    <h3>Calça Dark Street</h3>
+                    <h3>Velvet Rose</h3>
                     <p class="price">R$ 189,90</p>
                     <a href="#" class="buy">Comprar</a>
                 </div>
@@ -554,8 +745,8 @@
                 </div>
 
                 <div class="product-info">
-                    <h3>Moletom Shadow</h3>
-                    <p class="price">R$ 199,90</p>
+                    <h3>Top Lilith</h3>
+                    <p class="price">R$ 109,90</p>
                     <a href="#" class="buy">Comprar</a>
                 </div>
 
